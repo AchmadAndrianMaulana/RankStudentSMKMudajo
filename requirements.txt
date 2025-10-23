@@ -12,4 +12,4 @@ Flask-Migrate==4.0.7
 # ganti ke 2.2.3 agar ada wheel siap pakai
 pandas==2.2.3
 
-gunicorn
+gunicorn>=21.2.0
