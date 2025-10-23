@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4>Dashboard</h4>
+</div>
+<div class="card">
+  <div class="card-body">
+    {% if upload %}
+      <p><strong>File Terakhir:</strong> {{ upload.original_filename }} ({{ upload.n_rows }} baris)</p>
+      <a href="{{ url_for('main.upload') }}" class="btn btn-sm btn-outline-primary">Kelola Upload</a>
+    {% else %}
+      <p>Belum ada data. Silakan upload file Excel.</p>
+      <a href="{{ url_for('main.upload') }}" class="btn btn-sm btn-primary">Upload Data</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

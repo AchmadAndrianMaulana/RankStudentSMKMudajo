@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+<h4 class="mb-3">Hasil Perangkingan (ROC–ARAS)</h4>
+
+<form method="POST" class="row g-2 mb-3">
+  {% if use_combined %}
+    <!-- MODE: SATU FILTER (JurusanPeriode) -->
+    <div class="col-md-6">
+      <label class="form-label">Filter JurusanPeriode</label>
+      <select name="jurusanperiode" class="form-select">
+        <option value="">(Semua)</option>
+        {% for v in jurusanperiode_values %}
+          <option value="{{ v }}" {% if v == selected_jurusanperiode %}selected{% endif %}>{{ v }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  {% else %}
+    <!-- MODE: DUA FILTER (Jurusan & Periode) -->
+    <div class="col-md-4">
+      <label class="form-label">Filter Jurusan</label>
+      <select name="jurusan" class="form-select">
+        <option value="">(Semua)</option>
+        {% for j in jurusan_values %}
+          <option value="{{ j }}" {% if j == selected_jurusan %}selected{% endif %}>{{ j }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Filter Periode</label>
+      <select name="periode" class="form-select">
+        <option value="">(Semua)</option>
+        {% for p in periode_values %}
+          <option value="{{ p }}" {% if p == selected_periode %}selected{% endif %}>{{ p }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  {% endif %}
+
+  <div class="col-md-2 align-self-end">
+    <button class="btn btn-outline-primary w-100" type="submit">Terapkan</button>
+  </div>
+  <div class="col-md-2 align-self-end">
+    <a class="btn btn-success w-100" href="{{ download_url }}">Download CSV</a>
+  </div>
+  <div class="col-md-2 align-self-end">
+    <a class="btn btn-outline-success w-100" href="{{ download_excel_url }}">Download Excel</a>
+  </div>
+</form>
+
+<div class="table-responsive">
+  {{ table_html | safe }}
+</div>
+{% endblock %}
