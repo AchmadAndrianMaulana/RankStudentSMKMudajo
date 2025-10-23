@@ -1,7 +1,7 @@
-from app import create_app, db
+from app import app, db
 from app.models import User, Criteria, Subcriteria
 
-app = create_app()
+app = app()
 
 if __name__ == "__main__":
     # Initialize DB tables on first run
