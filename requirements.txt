@@ -1,15 +1,29 @@
+# ---- Flask dan Ekstensi ----
 Flask==2.3.3
 Flask-Login==0.6.3
 Flask-WTF==1.2.1
-WTForms==3.1.2
-Werkzeug==2.3.8
-SQLAlchemy==2.0.32
 Flask-SQLAlchemy==3.1.1
-# opsional tapi umum dipakai untuk migrasi
+SQLAlchemy==2.0.32
+Werkzeug==2.3.8
+
+# ---- Database & Migrasi (opsional tapi disarankan) ----
 Flask-Migrate==4.0.7
 
-# sebelumnya memicu build dari source di Python 3.13
-# ganti ke 2.2.3 agar ada wheel siap pakai
-pandas==2.2.3
+# ---- Data Processing ----
+pandas==2.2.3          # versi 2.2.3 aman untuk Python 3.13
+numpy==1.26.4
+openpyxl==3.1.5
 
-gunicorn>=21.2.0
+# ---- Form Validation ----
+WTForms==3.1.2
+email-validator==2.2.0  # untuk validator Email di WTForms
+
+# ---- Security & Utilities ----
+bcrypt==4.1.2
+python-dotenv==1.0.1    # jika kamu pakai .env file
+
+# ---- Production Server ----
+gunicorn>=21.2.0        # versi baru agar support --factory
+
+# ---- Opsional (regex, waktu, dll.) ----
+regex==2024.5.15
